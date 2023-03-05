@@ -1,0 +1,77 @@
+/*create student table*/
+
+Create table Student(Id int identity(1,1) primary key,
+StdName varchar(10),
+Gender char(1),
+Class int,
+EmailId varchar(20),
+Phoneno int,
+Clubname varchar(30) ,
+Totalgrade float,
+Gradestatus char(1))
+
+/*insert data into student table*/
+
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Ankita','F',4, 'wer@gmail.com',123653456, 'Red', 34.89 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Alex','F',3, 'Alex@gmail.com',456653456, 'Blue', 34.89 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Aleee','F',2, 'Aleee@gmail.com',789653456, 'Red', 34.89 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Ray','F',7, 'Ray@gmail.com',012653456, 'Orange', 34.89 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Sim','F',1, 'Sim@gmail.com',345653456, 'Red', 78 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Shur','F',4, 'Shur@gmail.com',567653456, 'purple', 78 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Max','F',4, 'Max@gmail.com',890653456, 'Pink', 49 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Marry','M',3, 'Marry@gmail.com',124653456, 'Red', 60 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Chie','F',4, 'Chie@gmail.com',237653456, 'Yellow', 34.89 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Mol','M',4, 'Mol@gmail.com',237653456, 'Red', 34.89 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Ankita','F',7, 'wer@gmail.com',237653456, 'Red', 88.89 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Inkita','F',4, 'Inkita@gmail.com',237653456, 'Black', 34.89 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('shea','F',4, 'shea@gmail.com',237653456, 'Pink', 60)
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Tnkita','M',4, 'Tnkita@gmail.com',237653456, 'Red', 87.89 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Unkita','F',9, 'Unkita@gmail.com',237653456, 'Whitw', 65.89 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Unkita','F',4, 'Unkita@gmail.com',876543255, 'Pink', 30 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Hnkita','F',3, 'Hnkita@gmail.com',98765432, 'Red', 34.89 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Gnkita','M',5, 'Gnkita@gmail.com',237653456, 'Black', 50 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Bnkita','F',8, 'Bnkita@gmail.com',237653456, 'Orange', 39 )
+insert into student (StdName, gender, class, emailid, phoneno, clubname, totalgrade) values ('Snkita','m',4, 'Snkita@gmail.com',09868676, 'Red', 78 )
+
+
+/*select all student data*/
+Select * From Student
+
+/*Set Gender value to "F" where clubname is "PINK" */
+update Student set gender = 'F' where Clubname = 'pink'
+
+/* Set Gradestatus value F, if student totalgrade is below or equal to 40 */
+update student set Gradestatus = 'F' where Totalgrade <= 40 
+
+/* Set Gradestatus value P, if student totalgrade is above then 40 */
+update student set Gradestatus = 'P' where Totalgrade > 40 
+
+/* Set Gradestatus value P even if it is fail(F), if student class is less then and equal to 6  */
+update student set Gradestatus = 'P' where Class <= 6 and Gradestatus = 'F'  
+
+/*get student which belongs from red club and gender is female(F) */
+select * from Student where Gender = 'F' and Clubname = 'Red'
+
+/*get student which ia above than 6 class having gender female but grade status is fail(F)*/
+Select * from Student where  class > 6 and Gender= 'F' and Gradestatus = 'F' 
+
+/*get student which belongs from Orange club having gendeer male but grade status is pass*/
+Select *from Student where Clubname = 'orange' and Gender= 'M' and Gradestatus= 'P'
+
+/* get top 10 student where grade is more than 80 */
+select top 10 * from student where Totalgrade < 80 
+
+/* get top 5 female student having gradestatus F but id should be in desc order*/
+Select top 5 *from Student where Gradestatus= 'F' order by id desc
+
+/* get top 5 female student having gradestatus pass (p) and club is red but id should be less than 15 */
+Select Top 5*from Student  where Gradestatus= 'P' and Clubname = 'red' and id <15
+
+/* get top 5 student having gradestatus pass(p) and club is Pink but id should be in desc order*/
+Select Top 5*from Student where Gradestatus='p' and Clubname = 'pink' order by id desc
+
+/* get top 10 student having gradestatus f and club is Orange but totalgreade should be in asc order */
+Select Top 10 *from Student where Gradestatus= 'F' and Clubname= 'orange' order by Totalgrade 
+
+/* get top 10 student having class greater tha 3  and club is red but std name should be in desc order */
+Select Top 10 * from student where class >3 and Clubname = 'red' order by StdName desc 
